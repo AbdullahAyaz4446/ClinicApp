@@ -1,12 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import OnBordingComponent from '../../../../components/bording-screen';
 import { useNavigation } from '@react-navigation/native';
+import OnBordingComponent from '../../../../components/bording-screen';
 
 const OnBordingScreen2 = () => {
   const navigation = useNavigation();
+
   const handleNextPress = () => {
-    navigation.replace('Launch');
+    // Try both methods for debugging
+    try {
+      navigation.replace('Launch');
+    } catch (error) {
+      console.error('Replace failed, trying navigate:', error);
+    }
   };
 
   return (
