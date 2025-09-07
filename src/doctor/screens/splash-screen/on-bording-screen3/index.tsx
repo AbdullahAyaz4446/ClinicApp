@@ -1,13 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import Login_Registration_Option from '../../../../components/login-Registration-option-component';
-
-const LunchScreen = () => {
+import { useNavigation } from '@react-navigation/native';
+const LaunchScreen = () => {
+  const navigation = useNavigation();
   const signUp = () => {
-    console.log('sign up');
+    navigation.navigate('SignUp');
   };
   const logIn = () => {
-    console.log('log in');
+    navigation.navigate('LogIn');
   };
   return (
     <View style={styles.mainContainer}>
@@ -16,7 +17,7 @@ const LunchScreen = () => {
   );
 };
 
-export default LunchScreen;
+export default LaunchScreen;
 
 const styles = StyleSheet.create({
   mainContainer: { flex: 1 },

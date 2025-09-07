@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-const index = () => {
+const LogIn = () => {
   return (
     <View>
-      <Text>index</Text>
+      <Text>Log In</Text>
     </View>
   );
 };
 
-export default index;
+export default LogIn;
 
 const styles = StyleSheet.create({});

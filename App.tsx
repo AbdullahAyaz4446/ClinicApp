@@ -6,6 +6,9 @@ import OnBordingScreen1 from './src/doctor/screens/splash-screen/on-bording-scre
 import OnBordingScreen2 from './src/doctor/screens/splash-screen/on-boridng-screen2';
 import Login_Registration_Option from './src/components/login-Registration-option-component';
 import LunchScreen from './src/doctor/screens/splash-screen/on-bording-screen3';
+import LogIn from './src/doctor/screens/auth/login-form';
+import SignUp from './src/doctor/screens/auth/register-form';
+import LaunchScreen from './src/doctor/screens/splash-screen/on-bording-screen3';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +22,9 @@ const App = () => {
       >
         <Stack.Screen name='Onboarding1' component={OnBordingScreen1} />
         <Stack.Screen name='Onboarding2' component={OnBordingScreen2} />
-        <Stack.Screen name='Launch' component={LunchScreen} />
+        <Stack.Screen name='Launch' component={LaunchScreen} />
+        <Stack.Screen name='LogIn' component={LogIn} />
+        <Stack.Screen name='SignUp' component={SignUp} />
       </Stack.Navigator>
     </NavigationContainer>
   );
