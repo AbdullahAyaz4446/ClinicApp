@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 const OnBordingScreen2 = () => {
   const navigation = useNavigation();
   const handleNextPress = () => {
-    navigation.navigate('Launch');
+    navigation.replace('Launch');
   };
 
   return (

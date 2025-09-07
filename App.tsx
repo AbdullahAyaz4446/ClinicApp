@@ -4,8 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OnBordingScreen1 from './src/doctor/screens/splash-screen/on-bording-screen1';
 import OnBordingScreen2 from './src/doctor/screens/splash-screen/on-boridng-screen2';
-import Login_Registration_Option from './src/components/login-Registration-option-component';
-import LunchScreen from './src/doctor/screens/splash-screen/on-bording-screen3';
 import LogIn from './src/doctor/screens/auth/login-form';
 import SignUp from './src/doctor/screens/auth/register-form';
 import LaunchScreen from './src/doctor/screens/splash-screen/on-bording-screen3';
