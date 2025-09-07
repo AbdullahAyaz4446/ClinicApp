@@ -17,6 +17,7 @@ const App = () => {
         screenOptions={{
           headerShown: false,
         }}
+        initialRouteName='Onboarding1'
       >
         <Stack.Screen name='Onboarding1' component={OnBordingScreen1} />
         <Stack.Screen name='Onboarding2' component={OnBordingScreen2} />
