@@ -14,7 +14,6 @@ type DashboardBoxesProps = {
   labTestsIconColor?: string;
   onAppointmentsPress?: () => void;
   onLabTestsPress?: () => void;
-  name?: string;
 };
 
 const DashboardBoxes: React.FC<DashboardBoxesProps> = ({
