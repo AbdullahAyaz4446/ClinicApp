@@ -29,7 +29,7 @@ const LogIn = () => {
     console.log('forget Button is pressed');
   };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.safeArea}>
       <View style={styles.mainContainer}>
         <View style={styles.headerStyle}>
           <TouchableOpacity
@@ -108,6 +108,10 @@ const LogIn = () => {
 export default LogIn;
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#EEEFF2',
+  },
   mainContainer: {
     flex: 1,
     backgroundColor: '#EEEFF2',

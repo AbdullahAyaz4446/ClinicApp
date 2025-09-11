@@ -18,6 +18,7 @@ type CustomTextInputProps = {
   inputStyle?: TextStyle;
   labelStyle?: TextStyle;
   secureTextEntry?: boolean;
+  multilines?: boolean;
 } & TextInputProps;
 
 const CustomTextInput: React.FC<CustomTextInputProps> = ({
@@ -29,6 +30,7 @@ const CustomTextInput: React.FC<CustomTextInputProps> = ({
   inputStyle,
   labelStyle,
   secureTextEntry = false,
+  multilines = false,
   ...props
 }) => {
   return (
@@ -41,8 +43,14 @@ const CustomTextInput: React.FC<CustomTextInputProps> = ({
           value={value}
           onChangeText={onChangeText}
           placeholder={placeholder}
-          style={[styles.textInputStyle, inputStyle]}
+          style={[
+            styles.textInputStyle,
+            multilines && styles.multilineStyle,
+            inputStyle,
+          ]}
           secureTextEntry={secureTextEntry}
+          multiline={multilines}
+          numberOfLines={multilines ? 6 : 1}
           {...props}
         />
       </View>
@@ -70,5 +78,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6F6F6',
     padding: 10,
     borderRadius: 18,
+  },
+  multilineStyle: {
+    minHeight: 120,
+    textAlignVertical: 'top',
   },
 });

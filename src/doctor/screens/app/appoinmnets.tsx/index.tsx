@@ -11,11 +11,18 @@ import Button from '../../../../components/button';
 import CustomText from '../../../../components/custom-text';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
+import { CustomDropdown } from '../../../../components/CustomDropdown';
 
 const Appoinments = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const navigation = useNavigation();
+  const countries = [
+    { label: 'United States', value: 'us' },
+    { label: 'Canada', value: 'ca' },
+    { label: 'United Kingdom', value: 'uk' },
+    { label: 'Australia', value: 'au' },
+  ];
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -27,18 +34,38 @@ const Appoinments = () => {
         </View>
         <View style={styles.bottomStyle}>
           <View>
-            <CustomTextInput
-              label='Username or email'
-              placeholder='abdullahayaz131@gmail.com'
-              onChangeText={setEmail}
-              value={email}
+            <CustomDropdown
+              label='Country'
+              data={countries}
+              value={selectedCountry}
+              onChange={setSelectedCountry}
+              placeholder='Select country'
+              borderColor='#4CAF50'
+              borderRadius={8}
+              backgroundColor='#FFFFFF'
+              iconColor='#4CAF50'
+              search={true} // Enable search functionality
             />
             <CustomTextInput
-              label='Password'
-              placeholder='**********'
+              label='Time'
+              placeholder='Select Time'
               onChangeText={setPassword}
               value={password}
               secureTextEntry
+            />
+            <CustomTextInput
+              label='Date'
+              placeholder='Select Date'
+              onChangeText={setPassword}
+              value={password}
+              secureTextEntry
+            />
+            <CustomTextInput
+              label='Description'
+              onChangeText={setPassword}
+              value={password}
+              secureTextEntry
+              multilines={true}
             />
           </View>
         </View>
