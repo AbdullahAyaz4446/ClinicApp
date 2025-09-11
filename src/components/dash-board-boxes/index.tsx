@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 type DashboardBoxesProps = {
   prescriptionsValue?: number;
   prescriptionsBgColor?: string;
-  prescriptionsIconColor?: string;
   appointmentsValue?: number;
   appointmentsBgColor?: string;
   appointmentsIconColor?: string;
@@ -14,7 +13,6 @@ type DashboardBoxesProps = {
   labTestsIconColor?: string;
   onAppointmentsPress?: () => void;
   onLabTestsPress?: () => void;
-  name?: string;
 };
 
 const DashboardBoxes: React.FC<DashboardBoxesProps> = ({
@@ -45,8 +43,13 @@ const DashboardBoxes: React.FC<DashboardBoxesProps> = ({
     return activeBox === boxType ? '#1E90FF' : defaultColor;
   };
 
+  const getTextColor = (boxType: string, defaultColor: string = 'black') => {
+    return activeBox === boxType ? 'white' : defaultColor;
+  };
+
   return (
-    <View>
+    <View style={styles.container}>
+      {/* Prescriptions Card */}
       <View
         style={[styles.singleBox, { backgroundColor: prescriptionsBgColor }]}
       >
@@ -54,90 +57,52 @@ const DashboardBoxes: React.FC<DashboardBoxesProps> = ({
         <Text style={styles.value}>{prescriptionsValue}</Text>
       </View>
 
+      {/* Row with Appointments & Lab Tests */}
       <View style={styles.row}>
+        {/* Appointments */}
         <TouchableOpacity
+          style={[
+            styles.box,
+            {
+              backgroundColor: getBoxColor('appointments', appointmentsBgColor),
+            },
+          ]}
           onPress={() => handlePress('appointments', onAppointmentsPress)}
-          style={styles.boxTouchable}
+          activeOpacity={0.7}
         >
-          <View
-            style={[
-              styles.box,
-              {
-                backgroundColor: getBoxColor(
-                  'appointments',
-                  appointmentsBgColor
-                ),
-              },
-            ]}
-          >
-            <Icon
-              name='event'
-              size={24}
-              color={
-                activeBox === 'appointments' ? 'white' : appointmentsIconColor
-              }
-            />
-            <Text
-              style={[
-                styles.title,
-                {
-                  color: activeBox === 'appointments' ? 'white' : 'black',
-                },
-              ]}
-            >
-              Appointments
-            </Text>
-            <Text
-              style={[
-                styles.value,
-                {
-                  color: activeBox === 'appointments' ? 'white' : 'black',
-                },
-              ]}
-            >
-              {appointmentsValue}
-            </Text>
-          </View>
+          <Icon
+            name='event'
+            size={28}
+            color={getTextColor('appointments', appointmentsIconColor)}
+          />
+          <Text style={[styles.title, { color: getTextColor('appointments') }]}>
+            Appointments
+          </Text>
+          <Text style={[styles.value, { color: getTextColor('appointments') }]}>
+            {appointmentsValue}
+          </Text>
         </TouchableOpacity>
 
+        {/* Lab Tests */}
         <TouchableOpacity
+          style={[
+            styles.box,
+            { backgroundColor: getBoxColor('labTests', labTestsBgColor) },
+          ]}
           onPress={() => handlePress('labTests', onLabTestsPress)}
-          style={styles.boxTouchable}
+          activeOpacity={0.7}
         >
-          <View
-            style={[
-              styles.box,
-              {
-                backgroundColor: getBoxColor('labTests', labTestsBgColor),
-              },
-            ]}
-          >
-            <Icon
-              name='science'
-              size={24}
-              color={activeBox === 'labTests' ? 'white' : labTestsIconColor}
-            />
-            <Text
-              style={[
-                styles.title,
-                {
-                  color: activeBox === 'labTests' ? 'white' : 'black',
-                },
-              ]}
-            >
-              Lab Tests
-            </Text>
-            <Text
-              style={[
-                styles.value,
-                {
-                  color: activeBox === 'labTests' ? 'white' : 'black',
-                },
-              ]}
-            >
-              {labTestsValue}
-            </Text>
-          </View>
+          <Icon
+            name='science'
+            size={28}
+            color={getTextColor('labTests', labTestsIconColor)}
+          />
+          <Text style={[styles.title, { color: getTextColor('labTests') }]}>
+            Lab Tests
+          </Text>
+          <Text style={[styles.value, { color: getTextColor('labTests') }]}>
+            {labTestsValue}
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -145,51 +110,46 @@ const DashboardBoxes: React.FC<DashboardBoxesProps> = ({
 };
 
 const styles = StyleSheet.create({
+  container: {
+    marginTop: 20,
+  },
   singleBox: {
-    margin: 5,
-    marginHorizontal: 30,
+    margin: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    elevation: 8,
+    borderRadius: 14,
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    elevation: 5,
   },
   row: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    marginHorizontal: 30,
-  },
-  boxTouchable: {
-    flex: 1,
+    justifyContent: 'space-between',
+    marginHorizontal: 10,
   },
   box: {
-    margin: 5,
+    flex: 1,
+    margin: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    elevation: 8,
+    borderRadius: 14,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    elevation: 4,
   },
   title: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    marginTop: 8,
+    fontSize: 15,
+    fontWeight: '600',
+    marginTop: 6,
     textAlign: 'center',
   },
   value: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
     marginTop: 4,
   },

@@ -1,4 +1,10 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  SafeAreaView,
+} from 'react-native';
 import React, { useState } from 'react';
 import CustomTextInput from '../../../../components/custom-text-input';
 import Button from '../../../../components/button';
@@ -24,32 +30,34 @@ const Home = () => {
     console.log('forget Button is pressed');
   };
   return (
-    <View style={styles.mainContainer}>
-      <View style={styles.headerStyle}>
-        <TouchableOpacity style={styles.iconStyle}></TouchableOpacity>
-        <Text style={styles.headertextStyle}>Home</Text>
+    <SafeAreaView style={styles.mainContainer}>
+      <View style={styles.mainContainer}>
+        <View style={styles.headerStyle}>
+          <TouchableOpacity style={styles.iconStyle}></TouchableOpacity>
+          <Text style={styles.headertextStyle}>Home</Text>
 
-        <View
-          style={[
-            styles.iconStyle,
-            {
-              width: 40,
-              alignItems: 'center',
-              backgroundColor: '#DFF7E2',
-              borderRadius: 100,
-              height: 40,
-              justifyContent: 'center',
-            },
-          ]}
-        >
-          <Icon name='bell' size={20} color='black' />
+          <View
+            style={[
+              styles.iconStyle,
+              {
+                width: 40,
+                alignItems: 'center',
+                backgroundColor: '#DFF7E2',
+                borderRadius: 100,
+                height: 40,
+                justifyContent: 'center',
+              },
+            ]}
+          >
+            <Icon name='bell' size={20} color='black' />
+          </View>
+        </View>
+        <DashboardBoxes />
+        <View style={styles.bottomStyle}>
+          <View></View>
         </View>
       </View>
-      <DashboardBoxes />
-      <View style={styles.bottomStyle}>
-        <View></View>
-      </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

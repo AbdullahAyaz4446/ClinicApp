@@ -1,9 +1,9 @@
 import {
-  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  SafeAreaView,
 } from 'react-native';
 import React, { useState } from 'react';
 import CustomTextInput from '../../../../components/custom-text-input';
@@ -12,34 +12,17 @@ import CustomText from '../../../../components/custom-text';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
 
-const LogIn = () => {
+const Appoinments = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const navigation = useNavigation();
 
-  const handleLogin = () => {
-    navigation.navigate('Tab');
-  };
-
-  const handleSignUp = () => {
-    console.log('Sign Up pressed');
-  };
-
-  const handleForgotPassword = () => {
-    console.log('forget Button is pressed');
-  };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.mainContainer}>
       <View style={styles.mainContainer}>
         <View style={styles.headerStyle}>
-          <TouchableOpacity
-            style={styles.iconStyle}
-            onPress={() => navigation.goBack()}
-          >
-            <Icon name='arrow-left' size={20} color='black' />
-          </TouchableOpacity>
-          <Text style={styles.headertextStyle}>Welcome</Text>
-
+          <View style={styles.iconStyle} />
+          <Text style={styles.headertextStyle}>Appointment</Text>
           <View style={styles.iconStyle} />
         </View>
         <View style={styles.bottomStyle}>
@@ -58,54 +41,13 @@ const LogIn = () => {
               secureTextEntry
             />
           </View>
-
-          <View style={styles.buttonContainer}>
-            <Button title='Log In' onPress={handleLogin} />
-
-            <View style={styles.textConatiner}>
-              <CustomText
-                children='Forgot Password?'
-                fontWeight='normal'
-                textAlign='center'
-                onPress={handleForgotPassword}
-              />
-            </View>
-
-            <Button
-              title='Sign Up'
-              buttonStyle={{ backgroundColor: '#F6F6F6' }}
-              textColor='black'
-              onPress={handleSignUp}
-            />
-          </View>
-          <View>
-            <CustomText children='or sign up with' textAlign='center' />
-
-            <View style={styles.socialButtonsContainer}>
-              <View>
-                <Icon name='facebook' size={35} color='#1877F2' />
-              </View>
-              <View>
-                <Icon name='google' size={35} color='#DB4437' />
-              </View>
-            </View>
-
-            <View style={styles.signUpContainer}>
-              <CustomText children='Dont have a account?' />
-              <CustomText
-                children='Sign Up'
-                color='blue'
-                onPress={handleSignUp}
-              />
-            </View>
-          </View>
         </View>
       </View>
     </SafeAreaView>
   );
 };
 
-export default LogIn;
+export default Appoinments;
 
 const styles = StyleSheet.create({
   mainContainer: {
