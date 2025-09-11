@@ -18,12 +18,9 @@ type DropdownProps = {
   dropdownStyle?: object;
   placeholderStyle?: object;
   selectedTextStyle?: object;
-  iconStyle?: object;
   borderColor?: string;
   borderRadius?: number;
   backgroundColor?: string;
-  iconColor?: string;
-  error?: string;
   search?: boolean;
 };
 
@@ -38,49 +35,44 @@ const CustomDropdown: React.FC<DropdownProps> = ({
   dropdownStyle,
   placeholderStyle,
   selectedTextStyle,
-  iconStyle,
   borderColor = '#DDD',
-  borderRadius = 12,
-  backgroundColor = '#FFF',
-  iconColor = '#666',
-  error,
+  borderRadius = 18,
+  backgroundColor = '#F6F6F6',
   search = false,
 }) => {
   return (
     <View style={[styles.container, containerStyle]}>
-      {label && <Text style={[styles.label, labelStyle]}>{label}</Text>}
+      <View style={[styles.label, labelStyle]}>
+        <Text>{label}</Text>
+      </View>
 
-      <Dropdown
-        style={[
-          styles.dropdown,
-          dropdownStyle,
-          {
-            borderColor: error ? '#FF3B30' : borderColor,
-            borderRadius,
-            backgroundColor,
-          },
-        ]}
-        placeholderStyle={[styles.placeholderStyle, placeholderStyle]}
-        selectedTextStyle={[styles.selectedTextStyle, selectedTextStyle]}
-        inputSearchStyle={styles.inputSearchStyle}
-        iconStyle={[styles.iconStyle, iconStyle]}
-        data={data}
-        search={search}
-        maxHeight={300}
-        labelField='label'
-        valueField='value'
-        placeholder={placeholder}
-        searchPlaceholder='Search...'
-        value={value}
-        onChange={(item) => {
-          onChange(item.value);
-        }}
-        renderLeftIcon={() => (
-          <View style={[styles.icon, { backgroundColor: iconColor }]} />
-        )}
-      />
-
-      {error && <Text style={styles.errorText}>{error}</Text>}
+      <View style={styles.dropdownContainer}>
+        <Dropdown
+          style={[
+            styles.dropdown,
+            dropdownStyle,
+            {
+              borderColor: borderColor,
+              borderRadius,
+              backgroundColor,
+            },
+          ]}
+          placeholderStyle={[styles.placeholderStyle, placeholderStyle]}
+          selectedTextStyle={[styles.selectedTextStyle, selectedTextStyle]}
+          inputSearchStyle={styles.inputSearchStyle}
+          data={data}
+          search={search}
+          maxHeight={300}
+          labelField='label'
+          valueField='value'
+          placeholder={placeholder}
+          searchPlaceholder='Search...'
+          value={value}
+          onChange={(item) => {
+            onChange(item.value);
+          }}
+        />
+      </View>
     </View>
   );
 };
@@ -91,17 +83,17 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   label: {
-    fontSize: 16,
+    justifyContent: 'flex-start',
+    paddingHorizontal: 30,
     fontWeight: '600',
-    marginBottom: 8,
-    color: '#333',
-    paddingHorizontal: 4,
+    fontSize: 15,
   },
   dropdown: {
     height: 55,
     borderWidth: 1.5,
     paddingHorizontal: 16,
     paddingVertical: 8,
+    backgroundColor: '#F6F6F6',
   },
   placeholderStyle: {
     fontSize: 16,
@@ -111,26 +103,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#000',
   },
-  iconStyle: {
-    width: 20,
-    height: 20,
-  },
-  icon: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    marginRight: 8,
-  },
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
     borderRadius: 8,
   },
-  errorText: {
-    color: '#FF3B30',
-    fontSize: 14,
-    marginTop: 4,
-    paddingHorizontal: 4,
+  dropdownContainer: {
+    paddingHorizontal: 15,
+    paddingVertical: 10,
   },
 });
 

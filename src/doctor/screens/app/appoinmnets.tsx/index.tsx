@@ -11,11 +11,12 @@ import Button from '../../../../components/button';
 import CustomText from '../../../../components/custom-text';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
-import { CustomDropdown } from '../../../../components/CustomDropdown';
+import CustomDropdown from '../../../../components/drop-down/index';
 
 const Appoinments = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [selectedCountry, setSelectedCountry] = useState('');
   const navigation = useNavigation();
   const countries = [
     { label: 'United States', value: 'us' },
@@ -40,11 +41,8 @@ const Appoinments = () => {
               value={selectedCountry}
               onChange={setSelectedCountry}
               placeholder='Select country'
-              borderColor='#4CAF50'
               borderRadius={8}
               backgroundColor='#FFFFFF'
-              iconColor='#4CAF50'
-              search={true} // Enable search functionality
             />
             <CustomTextInput
               label='Time'
